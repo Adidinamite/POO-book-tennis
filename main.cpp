@@ -3,6 +3,7 @@
 #include <vector>
 #include "utilizator.h"
 #include "teren.h"
+#include "templates.h"
 /*class Inchiriere {
 private:
     Utilizator utilizator;
@@ -19,16 +20,14 @@ public:
 class Inchiriere {
 private:
     Utilizator utilizator;
-    Teren teren;
 public:
-    Inchiriere(const Utilizator& utilizator, const Teren& teren)
-            : utilizator(utilizator), teren(teren) {}
-
+    Inchiriere(const Utilizator& utilizator)
+            : utilizator(utilizator) {}
     friend std::ostream& operator<<(std::ostream& os, const Inchiriere& inchiriere);
 };
 
 std::ostream& operator<<(std::ostream& os, const Inchiriere& inchiriere) {
-    os << "Detalii Inchiriere: " << inchiriere.utilizator << ", " << inchiriere.teren;
+    os << "Detalii Inchiriere: " << inchiriere.utilizator;
     return os;
 }
 
@@ -40,7 +39,12 @@ private:
     int optiune;
     std::string numeTeren, programTeren;
     double pretTeren;
+    std::vector<Inchiriere>inchirieri;
+    //std::vector<std::string> oreOcupate;
 public:
+    /*void resetOreOcupate() {
+        this->oreOcupate.clear();
+    }*/
 
     void setOptiune(){
         std::cin>>optiune;
@@ -65,21 +69,24 @@ public:
     // Afișează toate terenurile
     void afiseazaTerenuri() const {
         std::cout << "Terenuri disponibile:\n";
-        for (const auto& teren : terenuri) {
-            std::cout << teren << "\n";
-        }
+        std::cout << terenuri << "\n";
+    }
+    void afiseazaInchirieri() const {
+        std::cout << "Terenuri disponibile:\n";
+        std::cout << inchirieri << "\n";
     }
     // Metoda pentru rularea meniului
     void run() {
 
-        while (true && getOptiune()!=4) {
+        while (true && getOptiune()!=5) {
 
             std::cout << "Introduceti o optiune (1, 2 sau 3):\n ";
             std::cout << "1.Adaugare/Editare/Stergere teren.\n ";
             std::cout << "2.Inchiriere teren.\n ";
             std::cout << "3.Verificare lista terenuri.\n ";
             /*std::cout << "4.Verificare disponibiltate ora x.\n ";*/
-            std::cout << "4.Inchidere aplicatie.\n ";
+            std::cout << "4.Afiseaza rezervari.\n ";
+            std::cout << "5.Inchidere meniu.\n ";
             setOptiune();
 
 
@@ -127,6 +134,7 @@ public:
                                 std::cout<<"Terenul introdus nu exista\n";
                                 break;
                             }
+                            break;
                         }
                         case 3:{
                             std::cout << "Introduceti numele terenului pe care vreti sa il stergeti:\n ";
@@ -154,13 +162,15 @@ public:
                     user1.setIntervalOrar();
                     std::cout<<"Teren:\n";
                     user1.setTeren();
-                    for (auto it = terenuri.begin(); it != terenuri.end(); ++it) {
+                    for(auto it = terenuri.begin(); it != terenuri.end(); ++it) {
                         if (it->getNume() == user1.getTeren()) {
                             it->stergeOra("10:00");
                             break;
                         }
                     }
                     std::cout<<"Am facut rezervarea!\n";
+                    Inchiriere inchiriere(user1);
+                    inchirieri.push_back(inchiriere);
                     break;
 
                 }
@@ -168,18 +178,22 @@ public:
                     std::cout << "Ati ales optiunea 3.\n";
                     afiseazaTerenuri();
                     break;
-                /*case 4:
-                    std::cout << "Ati ales optiunea 4.\n";
-                    break;*/
                 case 4:
+                    std::cout << "Ati ales optiunea 4.\n";
+                    afiseazaInchirieri();
+                    break;
+                    /*case 4:
+                        std::cout << "Ati ales optiunea 4.\n";
+                        break;*/
+                case 5:
                     std::cout << "Ati ales sa opriti aplicatia.\n";
                     break;
                 default:
                     std::cout << "Optiune invalida.\n";
                     break;
             }
-            }
         }
+    }
 };
 int main() {
     Menu menu;
@@ -188,13 +202,13 @@ int main() {
     Teren teren1("Teren3", "08:00-12:00", 25.0);
     menu.adaugaTeren(teren1);
 
-    Utilizator user("John", "08:00-16:00");
+    Utilizator user("John", "08:00-16:00", "Teren1");
     std::cout << user.getNume() << std::endl;
     std::cout << user.getNume() << std::endl;
     std::cout << user.getIntervalOrar() << std::endl;
     Utilizator user2 (user);
     std::cout << user2 << std::endl;
-    Inchiriere inchiriere(user, teren);
+    Inchiriere inchiriere(user);
     std::cout<<inchiriere<<"\n";
     menu.run();
     return 0;
