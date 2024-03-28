@@ -12,14 +12,14 @@ private:
 public:
     // Constructor
     Utilizator() = default;
-    Utilizator(const std::string& nume, const std::string& interval_orar)
-            : nume(nume), interval_orar(interval_orar) {
+    Utilizator(const std::string& nume, const std::string& interval_orar, const std::string& teren)
+            : nume(nume), interval_orar(interval_orar), teren(teren) {
         std::cout << "Constructorul pentru " << nume << " a fost apelat.\n";
     }
 
 
     Utilizator(const Utilizator& other)
-            : nume(other.nume), interval_orar(other.interval_orar) {
+            : nume(other.nume), interval_orar(other.interval_orar), teren(other.teren) {
         std::cout << "Constructorul de copiere pentru " << nume << " a fost apelat.\n";
     }
 
@@ -57,7 +57,7 @@ public:
 
 
     friend std::ostream& operator<<(std::ostream& os, const Utilizator& utilizator) {
-        os << "Nume: " << utilizator.nume << ", Interval orar: " << utilizator.interval_orar;
+        os << "Nume: " << utilizator.nume << ", Interval orar: " << utilizator.interval_orar << ", Teren: " << utilizator.teren;
         return os;
     }
 };
