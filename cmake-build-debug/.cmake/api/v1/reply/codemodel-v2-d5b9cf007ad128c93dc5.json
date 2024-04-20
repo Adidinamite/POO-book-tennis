@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "POO1::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-POO1-Debug-8466d22ee44a28f18f94.json",
+					"jsonFile" : "target-POO1-Debug-a2ed3e77da56cf708ad9.json",
 					"name" : "POO1",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/CLION PROJECTS/POO1/cmake-build-debug",
-		"source" : "D:/CLION PROJECTS/POO1"
+		"build" : "C:/Users/amito/CLionProjects/POO-book-tennis/cmake-build-debug",
+		"source" : "C:/Users/amito/CLionProjects/POO-book-tennis"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 4
+		"minor" : 6
 	}
 }

@@ -4,7 +4,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "templates.h"
+#include <algorithm>
+
 class Teren {
 private:
     std::string nume;
@@ -26,7 +27,9 @@ public:
     }
     void stergeOra(std::string s) {
         auto it = std::find(oreLibere.begin(), oreLibere.end(), s);
-        this->oreLibere.erase(it);
+        if (it != oreLibere.end()) {
+            this->oreLibere.erase(it);
+        }
     }
     ///oreLibere
     void generareOreLibere() {
@@ -48,7 +51,6 @@ public:
                 inceputMinut -= 60;
             }
         }
-
     }
     void afisareOreLibere() const {
         std::cout << "Ore Libere pentru Terenul " << nume << ":" << std::endl;
@@ -74,15 +76,19 @@ public:
     }
     void setProgram(const std::string& program) {
         this->program = program;
-
         generareOreLibere();
     }
     void setPret(double pret) {
         this->pret = pret;
     }
     friend std::ostream& operator<<(std::ostream& os, const Teren& teren) {
-        os << "Nume: " << teren.nume << ", Program: " << teren.oreLibere << ", Pret: " << teren.pret;
+        os << "Nume: " << teren.nume << ", Program: ";
+        for (const std::string& ora : teren.oreLibere) {
+            os << ora << " ";
+        }
+        os << ", Pret: " << teren.pret;
         return os;
-    };
+    }
 };
+
 #endif
