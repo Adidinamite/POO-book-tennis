@@ -96,7 +96,10 @@
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				1
+				1,
+				2,
+				3,
+				4
 			]
 		}
 	],
@@ -110,7 +113,22 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "templates.h",
+			"path" : "templates.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "inchiriere.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "teren.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "utilizator.hpp",
 			"sourceGroupIndex" : 1
 		}
 	],

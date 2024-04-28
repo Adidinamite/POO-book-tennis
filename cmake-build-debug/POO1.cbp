@@ -82,10 +82,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/amito/CLionProjects/POO-book-tennis/inchiriere.hpp">
+			<Option target="POO1"/>
+		</Unit>
 		<Unit filename="C:/Users/amito/CLionProjects/POO-book-tennis/main.cpp">
 			<Option target="POO1"/>
 		</Unit>
-		<Unit filename="C:/Users/amito/CLionProjects/POO-book-tennis/templates.h">
+		<Unit filename="C:/Users/amito/CLionProjects/POO-book-tennis/templates.hpp">
+			<Option target="POO1"/>
+		</Unit>
+		<Unit filename="C:/Users/amito/CLionProjects/POO-book-tennis/teren.hpp">
+			<Option target="POO1"/>
+		</Unit>
+		<Unit filename="C:/Users/amito/CLionProjects/POO-book-tennis/utilizator.hpp">
 			<Option target="POO1"/>
 		</Unit>
 		<Unit filename="C:/Users/amito/CLionProjects/POO-book-tennis/CMakeLists.txt">
